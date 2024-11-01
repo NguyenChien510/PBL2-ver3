@@ -43,6 +43,13 @@ void Registrations::ReadFromFile()
 	}
 }
 
+int Registrations::GetTicketPrice(){
+	return this->TicketPrice;
+}
+int Registrations::GetTicketType(){
+	return this->TicketType;
+}
+
 Registrations::Registrations()
 	: Vehicles("","","","","")
 {

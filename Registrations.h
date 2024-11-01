@@ -17,4 +17,6 @@ class Registrations : public ParkingLots, public Vehicles
 		void ReadFromFile();
 		void Show(string,bool);
 		friend void PrintRegistrationDetails(const Registrations&,Vehicles, bool);
+		int GetTicketPrice();
+		int GetTicketType();
 };

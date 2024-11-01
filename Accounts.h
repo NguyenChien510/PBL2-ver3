@@ -6,7 +6,7 @@
 #include <windows.h>
 #include "Registrations.h"
 using namespace std;
-class Accounts : public ParkingLots , public Owners
+class Accounts :  public Registrations
 {
 	private:
 		string username;

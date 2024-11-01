@@ -417,15 +417,56 @@ void Accounts::AdminInterface(string user,string pass)
 						}
 					}
 					if(!found){
-						cout << "Cannot find ID!"<<endl;system("cls");
+						cout << "Cannot find ID!"<<endl;_getch();system("cls");
 					}
 					break;
 				}
 				case 3:{
+    				system("cls");
+    				bool found = false;
+					cout << "Nhap ID can xoa : ";string option;getline(cin,option);
+					for (auto it = listacc.begin(); it != listacc.end(); ) {
+        				if (it->username == option) {
+            			found = true;
+            			it = listacc.erase(it); 
+            			cout << "Da xoa tai khoan: " << option <<endl;
+            			ofstream file("Accounts.txt",ios::out);
+						for(auto acc:listacc){
+						file << acc.username <<";"<<acc.password << ";" << acc.role<< endl;
+						}
+						file.close();_getch();system("cls");
+        			}else {
+            			++it; 
+       				}
+   					}
+					if(!found) cout << "Khong tim thay ID can xoa!"<<endl;_getch();system("cls");
 					break;
 				}
 				case 4:{
-					
+					system("cls");
+					int countC=0,countB=0,countA=0,priceC=0,priceB=0,priceA=0;
+					for(auto rg : listregis){
+						if(rg.GetTicketType()==1){
+							countC++;priceC+=rg.GetTicketPrice();
+						} 
+						else if(rg.GetTicketType()==2){
+							countB++;priceB+=rg.GetTicketPrice();
+						} 
+						else if(rg.GetTicketType()==3){
+							countA++;priceA+=rg.GetTicketPrice();
+						}
+					}
+					cout << "------THONG KE TRONG THANG--------"<<endl;
+					cout << "*     TONG SO XE TUNG KHU        *"<<endl;
+					cout << "KHU A  : "<<countA<<endl;
+					cout << "KHU B  : "<<countB<<endl;
+					cout << "KHU C  : "<<countC<<endl;
+					cout << "-----------------------"<<endl;
+					cout << "DOANH THU : "<<endl;
+					cout << "KHU A : " << priceA << endl;
+					cout << "KHU B : " << priceB << endl;
+					cout << "KHU C : " << priceC << endl;
+					_getch();system("cls");
 					break;
 				}
 				case 5:{
